@@ -1,5 +1,3 @@
-# use python 3.11 or below pls 3.12 lost setuptools and you wil lost your mind 
-# ~ adi from the past
 from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 import os
@@ -51,7 +49,6 @@ def upload_file():
         return jsonify({'emotion': emotion})
 
 if __name__ == '__main__':
-    # if not os.path.exists(app.config['UPLOAD_FOLDER']):
-    #     os.makedirs(app.config['UPLOAD_FOLDER'])
-    # app.run(debug=True)
-    print(predict_emotion("Adi_DP.jpg"))
+    if not os.path.exists(app.config['UPLOAD_FOLDER']):
+        os.makedirs(app.config['UPLOAD_FOLDER'])
+    app.run(host='0.0.0.0', port=5000, debug=True)
